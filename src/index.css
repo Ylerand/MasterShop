@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
 :root {
   --primary-nude: #F5EBE0;
   --secondary-nude: #E3D5CA;
@@ -13,8 +15,6 @@
   --transition: all 0.3s ease;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +29,11 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .serif {
+h1,
+h2,
+h3,
+h4,
+.serif {
   font-family: var(--font-serif);
   font-weight: 700;
   color: var(--black);
