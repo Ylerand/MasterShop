@@ -38,5 +38,10 @@ MasterShop es un e-commerce dedicado exclusivamente a la venta de artículos par
 - Contacto
 - Footer (Legales, Políticas, RRSS)
 
+## 7. Gestión de Usuarios (NUEVO)
+- **Cuentas:** Sistema de login simulado para clientes.
+- **Acceso:** Sección de "Mi Cuenta" para ver datos de perfil.
+- **Historial:** Sección de "Mis Pedidos" y "Mis Compras" para seguimiento histórico (basado en datos locales).
+
 ## 4. Respuestas de Descubrimiento
 *(Esperando respuestas al Bloque 1)*

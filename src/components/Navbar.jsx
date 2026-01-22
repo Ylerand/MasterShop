@@ -1,19 +1,21 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = ({ cartCount, onCartClick }) => {
+    const { user } = useAuth();
+
     return (
         <nav className="navbar">
             <div className="container nav-content">
-                <div className="logo">
+                <div className="logo" onClick={() => window.location.hash = 'home'}>
                     <span className="logo-main">Master</span>
                     <span className="logo-sub">Shop</span>
                 </div>
                 <ul className="nav-links">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#shop">Tienda</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#account">{user ? 'Mi Cuenta' : 'Iniciar Sesión'}</a></li>
                 </ul>
                 <div className="nav-actions">
                     <button className="cart-btn" onClick={onCartClick}>

@@ -37,12 +37,30 @@ export const CartProvider = ({ children }) => {
 
         message += `\n*TOTAL: $${total.toFixed(2)}*\n\nCoordinemos el pago y envío.`;
 
+        // Guardar pedido en el historial local antes de redirigir
+        const orderId = `MS-${Math.floor(Math.random() * 100000)}`;
+        const newOrder = {
+            id: orderId,
+            date: new Date().toLocaleDateString(),
+            items: [...cart],
+            total: total,
+            status: 'Procesando'
+        };
+
+        const savedOrders = JSON.parse(localStorage.getItem('mastershop_orders') || '[]');
+        localStorage.setItem('mastershop_orders', JSON.stringify([newOrder, ...savedOrders]));
+
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        clearCart();
+    };
+
+    const getOrderHistory = () => {
+        return JSON.parse(localStorage.getItem('mastershop_orders') || '[]');
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total, checkoutWhatsApp }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total, checkoutWhatsApp, getOrderHistory }}>
             {children}
         </CartContext.Provider>
     );
