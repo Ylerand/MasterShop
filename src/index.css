@@ -1,0 +1,103 @@
+:root {
+  --primary-nude: #F5EBE0;
+  --secondary-nude: #E3D5CA;
+  --accent-gold: #D4AF37;
+  --dark-gold: #AA820D;
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --gray-light: #F8F8F8;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --transition: all 0.3s ease;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--white);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-premium {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--black);
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: 1px solid var(--black);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-premium:hover {
+  background-color: transparent;
+  color: var(--black);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.btn-outline:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+section {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+
+.section-title span {
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}

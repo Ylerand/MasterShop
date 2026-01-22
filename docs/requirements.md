@@ -19,14 +19,21 @@ MasterShop es un e-commerce dedicado exclusivamente a la venta de artículos par
 
 ## 4. Experiencia de Usuario (UX)
 - **Checkout:** Al finalizar el carrito, se genera un mensaje estructurado para WhatsApp.
+- **WhatsApp Ncontacto:** +56930514851
 - **Testimonios:** Texto con estrellas de calificación (sin fotos).
 - **Políticas:** Borradores profesionales generados por el equipo (Devoluciones, Envíos, Privacidad).
 
-## 5. Estructura de la Plataforma
+## 5. Especificaciones Técnicas
+- **Frontend:** Vite + React.
+- **Estilos:** CSS Vanilla (Focus on premium aesthetics).
+- **Gestión de Datos:** Archivo local `data/products.js`.
+- **Hosting:** Vercel.
+
+## 6. Estructura de la Plataforma
 - Home (Banner, Destacados, Categorías, Beneficios, Testimonios)
 - Shop (Filtros, Tarjetas de producto)
 - Página de Producto (Galería, Descripción, Variantes)
-- Carrito y Checkout
+- Carrito y Checkout (Redirect a WA)
 - Sobre MasterShop
 - Contacto
 - Footer (Legales, Políticas, RRSS)
