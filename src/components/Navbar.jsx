@@ -1,31 +1,78 @@
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
-import './Navbar.css';
+import React from 'react'
 
 const Navbar = ({ cartCount, onCartClick }) => {
-    const { user } = useAuth();
-
     return (
-        <nav className="navbar">
-            <div className="container nav-content">
-                <div className="logo" onClick={() => window.location.hash = 'home'}>
-                    <span className="logo-main">Master</span>
-                    <span className="logo-sub">Shop</span>
-                </div>
-                <ul className="nav-links">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#shop">Tienda</a></li>
-                    <li><a href="#account">{user ? 'Mi Cuenta' : 'Iniciar Sesión'}</a></li>
-                </ul>
-                <div className="nav-actions">
-                    <button className="cart-btn" onClick={onCartClick}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
-                        {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-                    </button>
-                </div>
+        <nav style={styles.nav}>
+            <h1 style={styles.logo}>
+                Master<span style={styles.logoSpan}>Shop</span> 🌸
+            </h1>
+
+            <div style={styles.links}>
+                <a href="#home" style={styles.link}>Tienda</a>
+                <a href="#account" style={styles.link}>Cuenta</a>
+                <button onClick={onCartClick} style={styles.cartBtn}>
+                    🛍️ Bolsa <span style={styles.badge}>{cartCount}</span>
+                </button>
             </div>
         </nav>
-    );
-};
+    )
+}
 
-export default Navbar;
+const styles = {
+    nav: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '1rem 2rem',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)', // Blanco casi puro
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        boxShadow: '0 2px 10px rgba(212, 130, 150, 0.2)' // Sombra rosada
+    },
+    logo: {
+        margin: 0,
+        fontSize: '1.8rem',
+        fontFamily: "'Playfair Display', serif", // Fuente elegante si la tienes, si no usa la default
+        color: '#4a4a4a',
+    },
+    logoSpan: {
+        color: '#d48296', // Color Rosa Principal
+        fontStyle: 'italic'
+    },
+    links: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px'
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#666',
+        fontWeight: '500',
+        fontSize: '1rem',
+        transition: 'color 0.3s'
+    },
+    cartBtn: {
+        backgroundColor: '#d48296',
+        color: 'white',
+        border: 'none',
+        padding: '10px 20px',
+        borderRadius: '25px',
+        cursor: 'pointer',
+        fontSize: '1rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        boxShadow: '0 4px 10px rgba(212, 130, 150, 0.3)'
+    },
+    badge: {
+        backgroundColor: 'white',
+        color: '#d48296',
+        borderRadius: '50%',
+        padding: '2px 8px',
+        fontSize: '0.8rem',
+        fontWeight: 'bold'
+    }
+}
+
+export default Navbar

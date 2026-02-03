@@ -1,24 +1,64 @@
+/* App.css - Diseño MasterShop Rose Gold */
+
+:root {
+  --primary-rose: #d48296;
+  /* Rosa Antiguo (Botones y acentos) */
+  --soft-blush: #fff0f3;
+  /* Rosa Muy Pálido (Fondos) */
+  --deep-rose: #9e475b;
+  /* Rosa Intenso (Textos importantes) */
+  --text-dark: #4a4a4a;
+  /* Gris oscuro suave (Mejor que negro puro) */
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(212, 130, 150, 0.15);
+  /* Sombra rosada suave */
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  color: var(--text-dark);
+  /* Fondo con textura floral suave y elegante */
+  background-color: var(--soft-blush);
+  background-image: url('https://images.unsplash.com/photo-1490750967868-58cb75063ed4?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* El fondo se queda quieto al hacer scroll */
+  background-blend-mode: overlay;
+  /* Mezcla la imagen con el color rosa para que sea suave */
+}
+
+/* Hacemos que la App tenga un contenedor semi-transparente para leer bien */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-main {
-  flex: 1;
+/* Botones Globales Elegantes */
+button {
+  transition: all 0.3s ease;
 }
 
-/* Base transitions for page elements */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 130, 150, 0.4);
+}
+
+/* Animación suave de entrada */
 .fade-in {
-  animation: fadeIn 0.8s ease-in;
+  animation: fadeIn 0.5s ease-in;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

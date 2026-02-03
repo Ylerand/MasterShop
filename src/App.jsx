@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
+// Importamos los contextos (Los "Cerebros" de la app)
 import { CartProvider, useCart } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
+import { ProductProvider } from './context/ProductContext' // <--- ¡AQUÍ ESTÁ LO NUEVO!
+
+// Importamos las páginas y componentes
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Account from './pages/Account'
+import AdminLogin from './pages/AdminLogin'
+import Dashboard from './pages/Dashboard'
 import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
 import './App.css'
@@ -20,25 +26,44 @@ function AppContent() {
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Initial check
+    handleHashChange();
 
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'admin-login':
+        return <AdminLogin />;
+      case 'dashboard':
+        return <Dashboard />;
+      case 'account':
+        return <Account />;
+      case 'home':
+      case 'shop':
+      default:
+        return <Home />;
+    }
+  };
+
+  const isAdminPage = currentPage === 'admin-login' || currentPage === 'dashboard';
+
   return (
     <div className="app-container">
-      <Navbar
-        cartCount={cartCount}
-        onCartClick={() => setIsCartOpen(true)}
-      />
+      {!isAdminPage && (
+        <Navbar
+          cartCount={cartCount}
+          onCartClick={() => setIsCartOpen(true)}
+        />
+      )}
 
       <main className="fade-in">
-        {currentPage === 'home' || currentPage === 'shop' ? <Home /> : <Account />}
+        {renderPage()}
       </main>
 
-      <Footer />
+      {!isAdminPage && <Footer />}
 
       <CartDrawer
         isOpen={isCartOpen}
@@ -48,11 +73,16 @@ function AppContent() {
   )
 }
 
+// AQUÍ ESTÁ EL CAMBIO CLAVE DEL PASO 2:
 function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <AppContent />
+        <ProductProvider> {/* <--- ESTO ES LO QUE AGREGAMOS (El envoltorio) */}
+
+          <AppContent />
+
+        </ProductProvider> {/* <--- AQUÍ SE CIERRA */}
       </CartProvider>
     </AuthProvider>
   )
