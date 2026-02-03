@@ -17,6 +17,10 @@ const Navbar = ({ onCartClick, onAccount, onHome }) => {
                 <a href="#home" style={styles.link}>Inicio</a>
                 <a href="#home" style={styles.link}>Colecciones</a>
 
+                {user?.role === 'admin' && (
+                    <a href="#dashboard" style={{ ...styles.link, color: '#d43f3f' }}>Panel Admin</a>
+                )}
+
                 {user ? (
                     <a href="#account" style={styles.link}>Mi Cuenta</a>
                 ) : (

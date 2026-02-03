@@ -36,7 +36,7 @@ export default function App() {
               {!isAdminView && !isAuthView && (
                 <Navbar
                   onAccount={() => window.location.hash = 'account'}
-                  onCart={() => setCartOpen(true)}
+                  onCartClick={() => setCartOpen(true)}
                   onHome={() => window.location.hash = 'home'}
                 />
               )}

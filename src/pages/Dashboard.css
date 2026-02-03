@@ -398,6 +398,66 @@
     margin-top: 10px;
 }
 
+/* Collections Manager */
+.mini-form {
+    display: flex;
+    gap: 10px;
+}
+
+.input-mini {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.btn-mini {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    background: #2d2d2d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.collection-card {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.collection-card h4 {
+    margin: 0;
+    color: #333;
+}
+
+.btn-icon-delete {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.btn-icon-delete:hover {
+    background: #ffe6e6;
+}
+
 .status-pill.warning {
     background-color: #fff3cd;
     color: #856404;

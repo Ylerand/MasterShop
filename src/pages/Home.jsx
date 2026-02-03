@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProducts } from '../context/ProductContext';
 import { useCart } from '../context/CartContext';
 import './Home.css';
 
 export default function Home() {
-    const { products } = useProducts();
+    const { products, categories } = useProducts(); // Use dynamic categories
     const { addToCart } = useCart();
+    const [selectedCategory, setSelectedCategory] = useState('Todos');
+
+    const filteredProducts = selectedCategory === 'Todos'
+        ? products
+        : products.filter(p => p.category === selectedCategory);
 
     return (
         <div className="home-container">
@@ -26,8 +31,26 @@ export default function Home() {
             </header>
 
             <section className="product-showcase">
+                <div className="filter-bar">
+                    <button
+                        className={`filter-chip ${selectedCategory === 'Todos' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('Todos')}
+                    >
+                        Todos
+                    </button>
+                    {categories.map(cat => (
+                        <button
+                            key={cat}
+                            className={`filter-chip ${selectedCategory === cat ? 'active' : ''}`}
+                            onClick={() => setSelectedCategory(cat)}
+                        >
+                            {cat}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="product-grid">
-                    {products.map((p) => (
+                    {filteredProducts.map((p) => (
                         <div key={p.id} className="item-card">
                             <div className="item-img">
                                 <img src={p.image} alt={p.name} />
