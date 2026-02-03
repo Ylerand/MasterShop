@@ -9,8 +9,9 @@ import Account from './pages/Account';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-
-// ... imports
+import CartDrawer from './components/CartDrawer';
+import Footer from './components/Footer';
+import './App.css';
 
 export default function App() {
   const [view, setView] = useState('home');
