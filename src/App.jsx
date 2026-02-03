@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Account from './pages/Account';
 import Dashboard from './pages/Dashboard';
+import AdminLogin from './pages/AdminLogin';
 import CartDrawer from './components/CartDrawer';
 import './App.css';
 
@@ -38,7 +39,7 @@ export default function App() {
               )}
 
               <main className="fade-in">
-                {view === 'dashboard' ? <Dashboard /> : view === 'account' ? <Account /> : <Home />}
+                {view === 'dashboard' ? <Dashboard /> : view === 'admin-login' ? <AdminLogin /> : view === 'account' ? <Account /> : <Home />}
               </main>
 
               <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />

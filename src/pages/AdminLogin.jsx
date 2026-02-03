@@ -9,14 +9,14 @@ const AdminLogin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Simulación de credenciales de admin
+        // 1. Simulación de credenciales de admin (Hardcoded para esta demo)
         if (email === 'admin@mastershop.com' && password === 'admin123') {
-            // --- INICIO DEL CÓDIGO NUEVO ---
-            if (email === 'admin@mastershop.com' && password === 'admin123') {
-                // Esta línea es la magia: cambia la URL a #dashboard
-                window.location.hash = 'dashboard';
-            }
-            // --- FIN DEL CÓDIGO NUEVO ---
+
+            // 2. Actualizar estado global (Importante para que la App sepa que es admin)
+            login({ email, name: 'Admin Master', role: 'admin' });
+
+            // 3. Redireccionar
+            window.location.hash = 'dashboard';
         } else {
             setError('Credenciales incorrectas. Prueba admin@mastershop.com / admin123');
         }

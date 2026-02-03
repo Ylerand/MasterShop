@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useProducts } from '../context/ProductContext';
+import { useAuth } from '../context/AuthContext';
 import { LayoutDashboard, ShoppingBag, BarChart3, Plus, Trash2 } from 'lucide-react';
 import './Dashboard.css';
 
 export default function Dashboard() {
     const { products, deleteProduct } = useProducts();
+    const { user } = useAuth();
+
+    // Security Guard 🛡️
+    useEffect(() => {
+        if (!user || user.email !== 'admin@mastershop.com') {
+            window.location.hash = 'admin-login';
+        }
+    }, [user]);
+
+    if (!user || user.email !== 'admin@mastershop.com') return null; // Prevent flash
 
     return (
         <div className="admin-layout">
