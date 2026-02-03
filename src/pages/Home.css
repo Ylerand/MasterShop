@@ -42,64 +42,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 4rem 8%;
-    background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
+    background: #ffffff;
+    /* Pure white for clean look */
     min-height: 80vh;
 }
 
-.hero-text {
-    flex: 1;
-    max-width: 600px;
-    animation: fadeIn 1s ease-out;
-}
-
-.hero-title {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: #2d2d2d;
-    font-family: 'Playfair Display', serif;
-}
-
-.hero-title span {
-    color: #d48296;
-    /* Rose Gold */
-    font-style: italic;
-}
-
-.hero-text p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 2.5rem;
-}
-
-.btn-primary {
-    padding: 1rem 2.5rem;
-    background-color: #000;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-    border-radius: 2px;
-}
-
-.btn-primary:hover {
-    transform: translateY(-5px);
-    background-color: #222;
-}
-
-.hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
+/* ... */
 
 .hero-visual img {
     max-width: 100%;
     height: auto;
     border-radius: 200px 200px 0 0;
-    box-shadow: 20px 20px 0px #ffe4e1;
+    box-shadow: 20px 20px 0px #f5f5f5;
+    /* Neutral light grey shadow */
 }
 
 .product-showcase {

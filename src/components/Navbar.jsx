@@ -57,7 +57,7 @@ const styles = {
         letterSpacing: '-0.5px'
     },
     logoSpan: {
-        color: '#d48296',
+        color: '#d4a000', // Gold/Yellow
         fontStyle: 'italic',
         fontWeight: '400'
     },
@@ -68,7 +68,7 @@ const styles = {
     },
     link: {
         textDecoration: 'none',
-        color: '#555',
+        color: '#000',
         fontWeight: '600',
         fontSize: '0.95rem',
         textTransform: 'uppercase',
@@ -76,9 +76,9 @@ const styles = {
         transition: 'color 0.3s',
     },
     cartBtn: {
-        backgroundColor: '#2d2d2d', // Negro elegante
-        color: 'white',
-        border: 'none',
+        backgroundColor: '#000', // Black
+        color: '#FFD700', // Yellow text
+        border: '1px solid #FFD700',
         padding: '12px 28px',
         borderRadius: '50px', // Pill shape
         cursor: 'pointer',
@@ -87,12 +87,12 @@ const styles = {
         alignItems: 'center',
         gap: '12px',
         fontWeight: '600',
-        boxShadow: '0 8px 20px rgba(45, 45, 45, 0.2)',
+        boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
         transition: 'transform 0.2s'
     },
     badge: {
-        backgroundColor: '#d48296',
-        color: 'white',
+        backgroundColor: '#FFD700',
+        color: 'black',
         borderRadius: '50%',
         padding: '2px 8px',
         fontSize: '0.75rem',
