@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const OrderContext = createContext();
-export const useOrders = () => useContext(OrderContext);
+export const useOrders = () => {
+    const context = useContext(OrderContext);
+    if (!context) throw new Error('useOrders debe usarse dentro de un OrderProvider');
+    return context;
+};
 
 export const OrderProvider = ({ children }) => {
-    // Persistencia: Cargamos pedidos del localStorage al iniciar
+    // Persistencia con LocalStorage
     const [orders, setOrders] = useState(() => {
         const saved = localStorage.getItem('mastershop_orders');
         return saved ? JSON.parse(saved) : [];

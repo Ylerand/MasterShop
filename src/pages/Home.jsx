@@ -7,13 +7,6 @@ export default function Home() {
     const { products } = useProducts();
     const { addToCart } = useCart();
 
-    // Imágenes de alta costura para el estilo pro
-    const defaultImgs = [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000", // Modelo vestido
-        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1000", // Collar
-        "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000"  // Joyería
-    ];
-
     return (
         <div className="home-container">
             <header className="hero-section">
@@ -29,10 +22,10 @@ export default function Home() {
 
             <section className="product-showcase">
                 <div className="product-grid">
-                    {products.map((p, i) => (
+                    {products.map((p) => (
                         <div key={p.id} className="item-card">
                             <div className="item-img">
-                                <img src={p.image || defaultImgs[i % 3]} alt={p.name} />
+                                <img src={p.image} alt={p.name} />
                             </div>
                             <div className="item-details">
                                 <h4>{p.name}</h4>

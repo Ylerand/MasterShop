@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { ProductProvider } from './context/ProductContext';
 import { OrderProvider } from './context/OrderContext';
@@ -14,15 +14,14 @@ export default function App() {
   const [view, setView] = useState('home');
   const [cartOpen, setCartOpen] = useState(false);
 
-  const renderView = () => {
-    switch (view) {
-      case 'dashboard': return <Dashboard />;
-      case 'account': return <Account />;
-      default: return <Home />;
-    }
-  };
+  useEffect(() => {
+    const handleHash = () => setView(window.location.hash.replace('#', '') || 'home');
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
-  const isAdmin = view === 'dashboard';
+  const isAdmin = view === 'dashboard' || view === 'admin-login';
 
   return (
     <AuthProvider>
@@ -30,11 +29,19 @@ export default function App() {
         <OrderProvider>
           <CartProvider>
             <div className="master-app">
-              {!isAdmin && <Navbar onAccount={() => setView('account')} onCart={() => setCartOpen(true)} onHome={() => setView('home')} />}
+              {!isAdmin && (
+                <Navbar
+                  onAccount={() => window.location.hash = 'account'}
+                  onCart={() => setCartOpen(true)}
+                  onHome={() => window.location.hash = 'home'}
+                />
+              )}
 
-              {renderView()}
+              <main className="fade-in">
+                {view === 'dashboard' ? <Dashboard /> : view === 'account' ? <Account /> : <Home />}
+              </main>
 
-              <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} onCheckout={() => { setCartOpen(false); setView('account'); }} />
+              <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
             </div>
           </CartProvider>
         </OrderProvider>

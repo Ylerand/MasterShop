@@ -1,51 +1,45 @@
 import React from 'react';
-import './CartDrawer.css';
 import { useCart } from '../context/CartContext';
+import { useOrders } from '../context/OrderContext';
+import { X, CreditCard, Trash2 } from 'lucide-react';
+import './CartDrawer.css';
 
-const CartDrawer = ({ isOpen, onClose }) => {
-    const { cart, removeFromCart, total, checkoutWhatsApp } = useCart();
+export default function CartDrawer({ isOpen, onClose }) {
+    const { cart, removeFromCart, total, clearCart } = useCart();
+    const { createOrder } = useOrders();
 
-    if (!isOpen) return null;
+    const handleCheckout = () => {
+        if (cart.length === 0) return;
+        createOrder(cart, total);
+        clearCart();
+        onClose();
+        window.location.hash = 'account';
+    };
 
     return (
-        <div className="cart-overlay" onClick={onClose}>
-            <div className="cart-drawer" onClick={(e) => e.stopPropagation()}>
-                <div className="cart-header">
-                    <h3>Tu Carrito</h3>
-                    <button className="close-btn" onClick={onClose}>&times;</button>
-                </div>
-
-                <div className="cart-items">
-                    {cart.length === 0 ? (
-                        <p className="empty-msg">Tu carrito está vacío.</p>
-                    ) : (
-                        cart.map((item) => (
-                            <div key={item.id} className="cart-item">
-                                <img src={item.image} alt={item.name} />
-                                <div className="item-details">
-                                    <h4>{item.name}</h4>
-                                    <p>{item.quantity} x ${item.price.toFixed(2)}</p>
-                                    <button onClick={() => removeFromCart(item.id)}>Eliminar</button>
-                                </div>
-                            </div>
-                        ))
-                    )}
-                </div>
-
-                {cart.length > 0 && (
-                    <div className="cart-footer">
-                        <div className="cart-total">
-                            <span>Total:</span>
-                            <span>${total.toFixed(2)}</span>
+        <div className={`cart-drawer ${isOpen ? 'open' : ''}`}>
+            <div className="cart-header">
+                <h3>Tu Carrito</h3>
+                <button onClick={onClose}><X /></button>
+            </div>
+            <div className="cart-items">
+                {cart.map(item => (
+                    <div key={item.id} className="cart-item">
+                        <img src={item.image} alt="" />
+                        <div className="info">
+                            <h4>{item.name}</h4>
+                            <p>{item.price.toFixed(2)} €</p>
                         </div>
-                        <button className="btn-premium checkout-btn" onClick={checkoutWhatsApp}>
-                            Finalizar por WhatsApp
-                        </button>
+                        <button onClick={() => removeFromCart(item.id)}><Trash2 size={16} /></button>
                     </div>
-                )}
+                ))}
+            </div>
+            <div className="cart-footer">
+                <div className="total">Total: {total.toFixed(2)} €</div>
+                <button className="btn-checkout" onClick={handleCheckout}>
+                    <CreditCard size={18} /> PAGAR CON TARJETA
+                </button>
             </div>
         </div>
     );
-};
-
-export default CartDrawer;
+}
