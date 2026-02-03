@@ -1,351 +1,204 @@
-/* =========================================
-   1. CONTENEDOR PRINCIPAL Y ANIMACIONES
-   ========================================= */
-.account-container {
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background-color: #fff0f5;
-    /* Fondo rosado suave */
-    font-family: 'Poppins', sans-serif;
-    /* O la fuente que uses en tu App */
+/* Account.css */
+
+.account-view {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Animación de entrada suave */
-.fade-in {
-    animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================================
-   2. TARJETAS (LOGIN Y PERFIL)
-   ========================================= */
-.auth-card,
-.profile-card {
-    background: white;
-    padding: 45px;
-    border-radius: 12px;
-    /* Bordes un poco más sutiles */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    /* Sombra elegante */
-    width: 100%;
-    position: relative;
-    border-top: 4px solid #d48296;
-    /* Tu color de acento rosa */
-}
-
-/* Tamaños específicos */
-.auth-card {
-    max-width: 450px;
-}
-
-.profile-card {
-    max-width: 950px;
-}
-
-/* =========================================
-   3. TEXTOS Y TÍTULOS
-   ========================================= */
-.auth-title,
-.profile-header h2 {
-    color: #9e475b;
-    /* Rosa oscuro elegante */
-    margin-bottom: 10px;
-    font-family: serif;
-    /* Fuente elegante para títulos */
+.order-history h2 {
     font-size: 2rem;
-    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #333;
+    font-family: serif;
 }
 
-.auth-subtitle {
-    color: #888;
-    font-size: 0.95rem;
-    margin-bottom: 35px;
+.order-list {
+    display: grid;
+    gap: 20px;
 }
 
-/* =========================================
-   4. FORMULARIOS (LOGIN/REGISTRO)
-   ========================================= */
-.auth-form {
+.order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    gap: 2rem;
+}
+
+.order-header {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.form-group {
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: #9e475b;
-    margin-bottom: 8px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #eee;
-    /* Borde suave */
-    border-radius: 6px;
-    background-color: #fafafa;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #d48296;
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(212, 130, 150, 0.1);
-}
-
-/* =========================================
-   5. BOTONES E INTERACCIONES
-   ========================================= */
-.auth-btn {
-    width: 100%;
-    padding: 16px;
-    background-color: #d48296;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    margin-top: 10px;
-}
-
-.auth-btn:hover {
-    background-color: #c06c80;
-    transform: translateY(-2px);
-}
-
-/* Switch texto abajo */
-.auth-switch {
-    margin-top: 25px;
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-}
-
-.auth-switch span {
-    color: #d48296;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
-.auth-switch span:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-   6. HEADER DEL PERFIL (Avatar y Logout)
-   ========================================= */
-.profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.avatar-circle {
-    width: 70px;
-    height: 70px;
-    background-color: #ffebee;
-    color: #9e475b;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.profile-header p {
-    color: #666;
-    margin: 5px 0 0 0;
-}
-
-.logout-btn {
-    padding: 10px 25px;
-    border: 1px solid #eee;
-    background: white;
-    color: #666;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s;
-}
-
-.logout-btn:hover {
-    background-color: #f8f8f8;
-    color: #ff4d4d;
-    /* Rojo suave al hover */
-    border-color: #ffdada;
-}
-
-/* =========================================
-   7. TABLA DE PEDIDOS (NUEVO)
-   ========================================= */
-.orders-section h3 {
-    color: #555;
-    margin-bottom: 25px;
-    font-weight: 600;
-}
-
-.table-responsive {
-    overflow-x: auto;
-    /* Scroll horizontal en móviles */
-}
-
-.orders-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 700px;
-    /* Ancho mínimo para que no se rompa */
-}
-
-.orders-table th {
-    text-align: left;
-    padding: 15px;
-    background-color: #fff8fa;
-    /* Fondo muy sutil para encabezados */
-    color: #9e475b;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    border-bottom: 2px solid #eee;
-}
-
-.orders-table td {
-    padding: 20px 15px;
-    border-bottom: 1px solid #f5f5f5;
-    color: #444;
-    vertical-align: middle;
-}
-
-.order-id {
-    font-weight: 700;
-    color: #333;
-}
-
-.order-total {
-    font-weight: 700;
-    color: #d48296;
-    font-size: 1.05rem;
-}
-
-/* =========================================
-   8. BADGES Y BOTÓN DE PAGAR
-   ========================================= */
-.status-badge {
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* Estilo Pendiente */
-.status-badge.pending {
-    background-color: #fff8e1;
-    color: #f39c12;
-    border: 1px solid #ffe082;
-}
-
-/* Estilo Pagado/OK */
-.status-badge.ok {
-    background-color: #e8f5e9;
-    color: #27ae60;
-    border: 1px solid #c8e6c9;
-}
-
-/* Botón Pagar */
-.pay-btn {
-    background-color: #2ecc71;
-    /* Verde brillante */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
 }
 
-.pay-btn:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+.order-id {
+    font-weight: bold;
+    color: #333;
 }
 
-.text-muted {
-    color: #aaa;
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.badge.done {
+    background-color: #e8f5e9;
+    color: #27ae60;
+}
+
+.badge.wait {
+    background-color: #fff8e1;
+    color: #f39c12;
+}
+
+.order-previews {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.order-previews img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #f0f0f0;
+}
+
+.order-footer {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.order-footer .total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d48296;
+}
+
+.btn-pay {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-pay:hover {
+    background-color: #000;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.pay-modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modal-top h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close {
+    cursor: pointer;
+    color: #888;
+}
+
+.pay-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card-input label {
+    display: block;
     font-size: 0.85rem;
-    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
 }
 
-/* =========================================
-   9. RESPONSIVE
-   ========================================= */
+.card-input input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+.flex-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.flex-row input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+.btn-confirm {
+    width: 100%;
+    background-color: #d48296;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn-confirm:hover {
+    background-color: #c06c80;
+}
+
 @media (max-width: 768px) {
-    .account-container {
-        padding: 30px 15px;
-    }
-
-    .profile-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header-left {
-        flex-direction: column;
-    }
-
-    .logout-btn {
-        width: 100%;
-    }
-
-    /* Tabla con scroll */
-    .orders-table th,
-    .orders-table td {
-        padding: 15px 10px;
-        font-size: 0.9rem;
+    .order-card {
+        grid-template-columns: 1fr;
     }
 }

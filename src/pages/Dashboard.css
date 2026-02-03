@@ -1,0 +1,159 @@
+/* Dashboard.css */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.admin-sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 2rem;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 3rem;
+    font-family: serif;
+}
+
+.admin-brand span {
+    color: #d48296;
+    font-style: italic;
+}
+
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background-color: #fff0f5;
+    color: #d48296;
+}
+
+.admin-main {
+    flex: 1;
+    padding: 3rem;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.stat-box span {
+    color: #888;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box h3 {
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+}
+
+.table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.btn-add {
+    background-color: #d48296;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 1rem;
+    color: #888;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f9f9f9;
+    vertical-align: middle;
+}
+
+.thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.btn-del {
+    background: none;
+    border: 1px solid #eee;
+    color: #ff4d4d;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+}
+
+.btn-del:hover {
+    background-color: #fff5f5;
+    border-color: #ffcccc;
+}
